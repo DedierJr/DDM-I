@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import * as Speech from "expo-speech";
 
 export default function App() {
   const [valor1, setValor1] = useState("");
@@ -9,22 +10,22 @@ export default function App() {
 
   const somar = () => {
     resultado = parseFloat(valor1) + parseFloat(valor2);
-    alert("O resultado é :" + resultado);
+    Speech.speak("O resultado é: " + resultado);
   };
 
   const subtrair = () => {
     resultado = parseFloat(valor1) - parseFloat(valor2);
-    alert("O resultado é :" + resultado);
+    Speech.speak("O resultado é: " + resultado);
   };
 
   const multiplicar = () => {
     resultado = parseFloat(valor1) * parseFloat(valor2);
-    alert("O resultado é :" + resultado);
+    Speech.speak("O resultado é: " + resultado);
   };
 
   const dividir = () => {
     resultado = parseFloat(valor1) / parseFloat(valor2);
-    alert("O resultado é :" + resultado);
+    Speech.speak("O resultado é: " + resultado);
   };
 
   return (
@@ -49,7 +50,6 @@ export default function App() {
       <Button onPress={subtrair} title="Pressione para subtrair"></Button>
       <Button onPress={multiplicar} title="Pressione para multiplicar"></Button>
       <Button onPress={dividir} title="Pressione para dividir"></Button>
-
       <StatusBar style="auto" />
     </View>
   );
@@ -58,7 +58,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },

@@ -10,32 +10,43 @@ export default function App() {
 
   const somar = () => {
     resultado = parseFloat(valor1) / (parseFloat(valor2) * parseFloat(valor2));
-    Speech.speak("Seu IMC é: " + resultado);
+    if (resultado < 18) {
+      Speech.speak(
+        "Seu IMC é: " + resultado.toFixed(2) + "Você está abaixo do peso"
+      );
+    }
+    if (resultado >= 30) {
+      Speech.speak(
+        "Seu IMC é: " + resultado.toFixed(2) + "Você está acima do peso"
+      );
+    } else {
+      Speech.speak("Seu IMC é: " + resultado.toFixed(2));
+    }
   };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        placeholder="Informe seu peso"
+        keyboardType="numeric"
+        onChangeText={(valor1) => setValor1(valor1)}
+        value={valor1}
+        style={styles.input}
+      ></TextInput>
+
+      <TextInput
+        placeholder="Informe sua altura"
+        keyboardType="numeric"
+        onChangeText={(valor2) => setValor2(valor2)}
+        value={valor2}
+        style={styles.input}
+      ></TextInput>
+
+      <Button onPress={somar} title="Pressione para calcular"></Button>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
-
-return (
-  <View style={styles.container}>
-    <TextInput
-      placeholder="Digite Valor 1"
-      keyboardType="numeric"
-      onChangeText={(valor1) => setValor1(valor1)}
-      value={valor1}
-      style={styles.input}
-    ></TextInput>
-
-    <TextInput
-      placeholder="Digite Valor 2"
-      keyboardType="numeric"
-      onChangeText={(valor2) => setValor2(valor2)}
-      value={valor2}
-      style={styles.input}
-    ></TextInput>
-
-    <Button onPress={somar} title="Pressione para somar"></Button>
-    <StatusBar style="auto" />
-  </View>
-);
 
 const styles = StyleSheet.create({
   container: {

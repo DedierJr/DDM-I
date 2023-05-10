@@ -12,32 +12,20 @@ import {
 const App = () => {
   const DATA = [
     {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      title: "Laranja",
-      nome: "Romeo Shakespeare de Souza Envenenado",
+      id: "item1",
+      title: "Pix",
       imageUri:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0hoVnor8SGv4LfNOHIBasnncL_jnrbme3ts5TTz4&s",
+        "https://cdn.icon-icons.com/icons2/3245/PNG/512/pix_icon_198027.png",
     },
     {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      title: "Second Item",
-      nome: "Cleiton",
-      imageUri:
-        "https://www.shutterstock.com/image-photo/little-dog-listens-music-earphones-260nw-1924565528.jpg",
+      id: "item2",
+      title: "Cartão",
+      imageUri: "https://cdn-icons-png.flaticon.com/512/62/62780.png",
     },
     {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      title: "Preto",
-      nome: "Spinel",
-      imageUri:
-        "https://i.pinimg.com/736x/21/91/4e/21914e914097c6ea2333fb60193c0585.jpg",
-    },
-    {
-      id: "4",
-      title: "Preto",
-      nome: "Puma",
-      imageUri:
-        "https://i.kym-cdn.com/photos/images/newsfeed/001/384/545/7b9.jpg",
+      id: "item3",
+      title: "Dinheiro",
+      imageUri: "https://cdn-icons-png.flaticon.com/512/4578/4578534.png",
     },
   ];
 

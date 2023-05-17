@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import * as Speech from "expo-speech";
 import {
   StyleSheet,
   Text,
@@ -10,34 +11,29 @@ import {
   Image,
 } from "react-native";
 export default function App() {
-  const [qtd_carne, setCarne] = useState("");
-  const [qtd_frango, setFrango] = useState("");
-  const [qtd_queijo, setQueijo] = useState("");
-  const [qtd_vento, setVento] = useState("");
+  const [VALOR1, setValor1] = useState("");
+  const [VALOR2, setValor2] = useState("");
 
   const calcular = (item) => {
     if (item.id === "item1") {
-      total =
-        5.3 * qtd_carne + 4.7 * qtd_frango + 4.0 * qtd_queijo + 8.0 * qtd_vento;
-      alert("Total: R$" + total);
+      total = parseFloat(VALOR1) + parseFloat(VALOR2);
+      alert("Total: " + total);
+      Speech.speak("Total: " + total);
     }
     if (item.id === "item2") {
-      total =
-        (5.3 * qtd_carne +
-          4.7 * qtd_frango +
-          4.0 * qtd_queijo +
-          8.0 * qtd_vento) *
-        1.15;
-      alert("Total: R$" + total.toFixed(2));
+      total = parseFloat(VALOR1) - parseFloat(VALOR2);
+      alert("Total: " + total);
+      Speech.speak("Total: " + total);
     }
     if (item.id === "item3") {
-      total =
-        (5.3 * qtd_carne +
-          4.7 * qtd_frango +
-          4.0 * qtd_queijo +
-          8.0 * qtd_vento) *
-        0.9;
-      alert("Total: R$" + total.toFixed(2));
+      total = parseFloat(VALOR1) * parseFloat(VALOR2);
+      alert("Total: " + total);
+      Speech.speak("Total: " + total);
+    }
+    if (item.id === "item4") {
+      total = parseFloat(VALOR1) / parseFloat(VALOR2);
+      alert("Total: " + total);
+      Speech.speak("Total: " + total);
     }
   };
 
@@ -79,53 +75,41 @@ export default function App() {
   const DATA = [
     {
       id: "item1",
-      title: "Pix",
-      imageUri:
-        "https://cdn.icon-icons.com/icons2/3245/PNG/512/pix_icon_198027.png",
+      title: "Soma",
+      imageUri: "https://cdn-icons-png.flaticon.com/256/54/54414.png",
     },
     {
       id: "item2",
-      title: "Cartão",
-      imageUri: "https://cdn-icons-png.flaticon.com/512/62/62780.png",
+      title: "Subtração",
+      imageUri: "https://cdn-icons-png.flaticon.com/512/6401/6401725.png",
     },
     {
       id: "item3",
-      title: "Dinheiro",
-      imageUri: "https://cdn-icons-png.flaticon.com/512/4578/4578534.png",
+      title: "Multiplicação",
+      imageUri: "https://cdn-icons-png.flaticon.com/512/43/43165.png",
+    },
+    {
+      id: "item4",
+      title: "Divisão",
+      imageUri: "https://cdn-icons-png.flaticon.com/512/660/660236.png",
     },
   ];
 
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Pastel de carne R$5,30 qtd"
+        placeholder="VALOR 1"
         keyboardType="numeric"
-        onChangeText={(qtd_carne) => setCarne(qtd_carne)}
-        value={qtd_carne}
+        onChangeText={(VALOR1) => setValor1(VALOR1)}
+        value={VALOR1}
         style={styles.input}
       ></TextInput>
 
       <TextInput
-        placeholder="Pastel de frango R$4,70 qtd"
+        placeholder="VALOR 2"
         keyboardType="numeric"
-        onChangeText={(qtd_frango) => setFrango(qtd_frango)}
-        value={qtd_frango}
-        style={styles.input}
-      ></TextInput>
-
-      <TextInput
-        placeholder="Pastel de queijo R$4,00 qtd"
-        keyboardType="numeric"
-        onChangeText={(qtd_queijo) => setQueijo(qtd_queijo)}
-        value={qtd_queijo}
-        style={styles.input}
-      ></TextInput>
-
-      <TextInput
-        placeholder="Pastel de vento R$8,00 qtd"
-        keyboardType="numeric"
-        onChangeText={(qtd_vento) => setVento(qtd_vento)}
-        value={qtd_vento}
+        onChangeText={(VALOR2) => setValor2(VALOR2)}
+        value={VALOR2}
         style={styles.input}
       ></TextInput>
 

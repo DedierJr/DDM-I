@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
-  Button,
   StyleSheet,
   Text,
   TextInput,
@@ -16,14 +15,30 @@ export default function App() {
   const [qtd_queijo, setQueijo] = useState("");
   const [qtd_vento, setVento] = useState("");
 
-  const calcular = () => {
-    total =
-      5.3 * qtd_carne + 4.7 * qtd_frango + 4.0 * qtd_queijo + 8.0 * qtd_vento;
-    alert("Total a pagar: R$" + total);
-  };
-
-  const ShortClick = (item) => {
-    alert("Total: ");
+  const calcular = (item) => {
+    if (item.id === "item1") {
+      total =
+        5.3 * qtd_carne + 4.7 * qtd_frango + 4.0 * qtd_queijo + 8.0 * qtd_vento;
+      alert("Total: R$" + total);
+    }
+    if (item.id === "item2") {
+      total =
+        (5.3 * qtd_carne +
+          4.7 * qtd_frango +
+          4.0 * qtd_queijo +
+          8.0 * qtd_vento) *
+        1.15;
+      alert("Total: R$" + total.toFixed(2));
+    }
+    if (item.id === "item3") {
+      total =
+        (5.3 * qtd_carne +
+          4.7 * qtd_frango +
+          4.0 * qtd_queijo +
+          8.0 * qtd_vento) *
+        0.9;
+      alert("Total: R$" + total.toFixed(2));
+    }
   };
 
   const renderItemNovo = ({ item }) => {
@@ -35,7 +50,7 @@ export default function App() {
             styles.title,
           ]}
           onPress={() => {
-            ShortClick(item);
+            calcular(item);
           }}
         >
           <View style={styles.alinhamentoLinha}>

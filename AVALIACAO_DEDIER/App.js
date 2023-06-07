@@ -29,7 +29,7 @@ export default function App() {
       Speech.speak("Total: R$" + total);
     }
     if (item.id === "item3") {
-      total = (refri + salgado) * 1.07;
+      total = (refri + salgado) * 1.1;
       alert("Total: R$" + total.toFixed(2));
       Speech.speak("Total: R$" + total);
     }
